@@ -68,7 +68,7 @@ CREATE TABLE Usuarios (
 	Documento_Trabajador VARCHAR(100),
     UsuarioNombre VARCHAR(50) UNIQUE NOT NULL,
     Contraseña VARCHAR(255) NOT NULL,  -- Contraseña encriptada
-    Activo BIT NOT NULL DEFAULT 1,
+    Salt Nvarchar(2000),
 	FOREIGN KEY (Documento_Trabajador) REFERENCES Empleados(Documento_Trabajador)
 );
 
@@ -310,7 +310,7 @@ GO
 
 INSERT INTO Compras (RepuestoID, ClienteID, FechaCompra, MontoTotal)
 VALUES
-(1, '001122334', '2024-11-01', 120.50),
+('1', '001122334', '2024-11-01', 120.50),
 (2, '112233445', '2024-11-02', 250.00),
 (3, '112233556', '2024-11-03', 99.99),
 (4, '123456789', '2024-11-04', 320.25),
@@ -320,10 +320,100 @@ VALUES
 (8, '456789123', '2024-11-08', 300.10),
 (9, '556677889', '2024-11-09', 400.25),
 (10, '654321987', '2024-11-10', 250.50),
-(11, '667788990', '2024-11-11', 175.00),
-(12, '778899001', '2024-11-12', 450.75),
+(5, '667788990', '2024-11-11', 175.00),
+(7, '778899001', '2024-11-12', 450.75),
 (3, '889900112', '2024-11-13', 320.00),
 (1, '987654321', '2024-11-14', 275.30),
-(12, '990011223', '2024-11-15', 530.60);
+(2, '990011223', '2024-11-15', 530.60);
 GO
 
+INSERT INTO CompraRepuestos (CompraID, RepuestoID, Cantidad, PrecioUnitario)
+VALUES 
+(1, 2, 10, 50),
+(7, 5, 15, 30),
+(2, 6, 8, 75),
+(3, 10, 12, 40),
+(4, 9, 7, 50);
+GO
+
+INSERT INTO Pagos (VentaID, Monto, FechaPago, MétodoPago, EstadoPago, Referencia)
+VALUES 
+(1, 1000.00, '2023-11-28', 'Efectivo', 'Completo', 'Pago #001'),
+(2, 500.00, '2023-11-27', 'Tarjeta de crédito', 'Parcial', 'Transacción #002'),
+(3, 750.00, '2023-11-29', 'Depósito bancario', 'En espera', 'Referencia 003'),
+(4, 200.00, '2023-11-30', 'Transferencia electrónica', 'Completo', 'Trf #004'),
+(5, 1500.00, '2023-12-01', 'Cheque', 'En proceso', 'Chq #005'),
+(6, 300.00, '2023-11-29', 'Efectivo', 'Completo', 'Pago en caja'),
+(7, 800.00, '2023-11-28', 'Tarjeta de crédito', 'Parcial', 'Transacción #007'),
+(8, 1200.00, '2023-12-02', 'Depósito bancario', 'Completo', 'Deposito #008'),
+(9, 250.00, '2023-11-27', 'Transferencia electrónica', 'En espera', 'Trf #009'),
+(10, 600.00, '2023-11-30', 'Cheque', 'Parcial', 'Chq #010');
+GO
+INSERT INTO Factura (ClienteID, EmpleadoID, FechaEmision, Garantia_Servicio, PagoID)
+VALUES 
+('001122334', '112233445', '2023-11-28', 30, 1),
+('112233445', '112233556', '2023-11-27', 60, 2),
+('112233556', '123456789', '2023-11-29', 90, 3),
+('123456789', '223344667', '2023-11-30', 45, 4),
+('445566778', '334455667', '2023-12-01', 120, 5),
+('556677889', '445566778', '2023-11-28', 30, 6),
+('987654321', '456789123', '2023-11-27', 75, 7),
+('990011223', '556677889', '2023-11-29', 150, 8),
+('334455667', '654321987', '2023-11-30', 90, 9),
+('456789123', '889900112', '2023-12-01', 180, 10);
+GO
+
+INSERT INTO TipoGarantias (DescripcionTipoGarantia, Periodo_Garantia)
+VALUES 
+('Garantía Plástica', '12 meses'),
+('Garantía de Reparación', '6 meses'),
+('Garantía de Piezas', '3 meses'),
+('Garantía de Servicio Completo', '24 meses'),
+('Garantía de Componentes', '18 meses'),
+('Garantía de Mantenimiento Preventivo', '12 meses'),
+('Garantía de Funcionamiento', '6 meses'),
+('Garantía de Calidad', '3 meses'),
+('Garantía de Reemplazo Gratuito', '30 días'),
+('Garantía de Soporte Técnico', '90 días');
+GO
+
+INSERT INTO Garantias (FacturaID, TipoGarantiaID, FechaInicio)
+VALUES 
+(1, 1, '2023-11-28'),  -- Garantía de 12 meses para la factura 1
+(2, 2, '2023-11-27'),  -- Garantía de 6 meses para la factura 2
+(3, 3, '2023-11-29'),  -- Garantía de 3 meses para la factura 3
+(4, 1, '2023-11-30'),  -- Garantía de 12 meses para la factura 4
+(5, 4, '2023-12-01'),  -- Garantía de 24 meses para la factura 5
+(1, 5, '2023-11-28'),  -- Garantía de 18 meses para la factura 1
+(6, 6, '2023-11-27'),  -- Garantía de 12 meses para la factura 6
+(7, 7, '2023-11-29'),  -- Garantía de 6 meses para la factura 7
+(8, 8, '2023-11-30'),  -- Garantía de 3 meses para la factura 8
+(9, 9, '2023-12-01');  -- Garantía de 30 días para la factura 9
+GO
+
+INSERT INTO EmpleadoCargo (EmpleadoID, CargoID, FechaAsignacion)
+VALUES
+    ('223344667', 1, '2024-11-01' ),
+    ('334455667', 2, '2024-11-02'),
+    ('445566778', 3, '2024-11-03'),
+    ('556677889', 4, '2024-11-04'),
+    ('456789123', 5, '2024-11-05'),
+    ('654321987', 6, '2024-11-06'),
+    ('987654321', 7, '2024-11-07'),
+    ('667788990', 8, '2024-11-08'),
+    ('889900112', 9, '2024-11-09'),
+    ('778899001', 10, '2024-11-10');GO
+
+INSERT INTO Usuarios (Documento_Trabajador, UsuarioNombre, Contraseña, Salt)
+VALUES 
+    ('223344667', 'johndoe', 'hashedpassword1', 'randomSaltValue1'),
+    ('334455667', 'janedoe', 'hashedpassword2', 'randomSaltValue2'),
+    ('112233556', 'mikejones', 'hashedpassword3', 'randomSaltValue3');
+go
+
+INSERT INTO UsuarioPerfil (UsuarioID, PerfilID, Activo)
+VALUES
+    (1, 1, 1),  -- User 1 assigned to Profile 1, active
+    (2, 2, 1),  -- User 2 assigned to Profile 2, active
+    (3, 1, 0),  -- User 3 assigned to Profile 1, inactive
+    (4, 3, 1);  -- User 4 assigned to Profile 3, active
