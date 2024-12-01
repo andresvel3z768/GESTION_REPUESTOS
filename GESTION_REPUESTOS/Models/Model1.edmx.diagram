@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb6f4cbd258948969e44aedaf46c992b" Name="Diagram1">
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Cargo" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Cliente" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.CompraRepuesto" Width="1.5" PointX="12.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Compra" Width="1.5" PointX="10.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.DetalleVenta" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Distribuidore" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.EmpleadoCargo" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.EmpleadoDetalle" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Empleado" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Factura" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Garantia" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Pago" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Perfile" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Repuesto" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.TipoGarantia" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.UsuarioPerfil" Width="1.5" PointX="7.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Usuario" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gestion_RepuestosModel.Venta" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__EmpleadoC__Cargo__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Compras__Cliente__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Factura__Cliente__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Ventas__ClienteI__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__CompraRep__Compr__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__CompraRep__Repue__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Compras__Repuest__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__DetalleVe__Repue__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__DetalleVe__Subto__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Repuestos__Prove__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__EmpleadoC__Emple__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Empleados__Emple__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Factura__Emplead__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Usuarios__Docume__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Ventas__Trabajad__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Factura__PagoID__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Garantias__Factu__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Garantias__TipoG__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__Pagos__VentaID__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__UsuarioPe__Perfi__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="Gestion_RepuestosModel.FK__UsuarioPe__Usuar__6FE99F9F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
